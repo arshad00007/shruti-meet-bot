@@ -391,13 +391,10 @@ async def interest_reminder_worker(app):
                     conn.execute('UPDATE members SET reminder_last_attempt_date=? WHERE user_id=? AND reminder_stopped=0', (today, user_id))
                     conn.commit(); conn.close()
                     message = (
-                        'Hi! Miss Bot here 🌸\n\n'
-                        'Real meet availability with Shruti may be available today in Bangalore. ❤️\n\n'
-                        'If you are interested, choose “Ready to Confirm” and contact @shruti23official '
-                        'to discuss booking and advance payment. If you need voice confirmation from Shruti, '
-                        'please contact her directly.\n\n'
-                        'You will receive at most one reminder per day. Reminders stop when you choose '
-                        '“Not Interested” or the admin confirms your advance has been received.'
+                        'Hi dear! ❤️🌸\n\n'
+                        'If you\'re interested in Real Meet, you\'re welcome to stay in our channel. 💕\n\n'
+                        '💌 Interested? Confirm your booking now!\n\n'
+                        'Please note that booking confirmation is mandatory to remain in the channel. Anyone whose booking isn\'t confirmed will be automatically removed.'
                     )
                     try:
                         await app.bot.send_message(user_id, message, reply_markup=interest_reminder_keyboard())
@@ -512,7 +509,8 @@ async def group_daily_post_worker(app):
 
 async def post_init(app):
     app.create_task(reminder_worker(app))
-    app.create_task(interest_reminder_worker(app))
+    # Disabled: this worker was sending the 11:00 AM daily private message
+    # to everyone who had started the bot.
     app.create_task(backup_worker(app))
     app.create_task(group_daily_post_worker(app))
 
