@@ -32,7 +32,7 @@ for _value in _group_values:
     if _value and _value not in GROUP_IDS:
         GROUP_IDS.append(_value)
 DB = os.environ.get("DB_PATH", "members.db")
-GROUP_DAILY_MESSAGE = "F21 HERE - REAL MEET AVAILABLE - BANGALORE\nDM @SHRUTI23OFFICIAL FOR DETAILS"
+GROUP_DAILY_MESSAGE = "F 21 here, from Bangalore\nCheck for real meet details"
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
